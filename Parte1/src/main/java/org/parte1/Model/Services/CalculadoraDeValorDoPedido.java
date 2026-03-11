@@ -14,28 +14,9 @@ public class CalculadoraDeValorDoPedido {
         for (Produto produto : produtos) {
             totalPedido += produto.getValorProduto();
         }
-        totalPedido += calcularEntrega(TiposDeEntrega tipoDeEntrega);
+        totalPedido += CalculadoraDeValorDeEntrega.calcularEntrega(produtos, tipoDeEntrega);
         return totalPedido;
     }
 
-    public static Double calcularEntrega(ArrayList<Produto> produtos, TiposDeEntrega tipoDeEntrega)
-    {
-    double valorDaEntrega = 0.0;
-    switch (tipoDeEntrega) {
-        case SEDEX -> {
-            valorDaEntrega = SEDEXService.calcularValorDoEnvio(CalculadoraDePeso.calcularPeso(produtos));
-            return valorDaEntrega;
-        }
-        case PAC -> {
-            valorDaEntrega = PACService.calcularValorDoEnvio(CalculadoraDePeso.calcularPeso(produtos));
-            return valorDaEntrega;
-        }
-        case RETIRADA -> {
-            return valorDaEntrega;
-        }
-        default -> {
-            return 0.0;
-        }
-    }
-    }
+
 }
