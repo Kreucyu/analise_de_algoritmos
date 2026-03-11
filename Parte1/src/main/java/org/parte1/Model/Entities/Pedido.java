@@ -17,6 +17,7 @@ public class Pedido {
 
     public void calcularValorDoPedido() {
         Double pesoDoPedido = calcularPesoDoPedido();
+
     }
 
     public Double calcularPesoDoPedido() {
