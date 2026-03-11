@@ -2,7 +2,7 @@ package org.parte1.Model.Services;
 
 public class PACService implements TipoEntrega {
     @Override
-    public Double calcularValorDoEnvio(Double PesoPedido) {
+    public static Double calcularValorDoEnvio(Double PesoPedido) {
         double valorEnvio = 0.0;
 
         double umQuilo = 1.0;

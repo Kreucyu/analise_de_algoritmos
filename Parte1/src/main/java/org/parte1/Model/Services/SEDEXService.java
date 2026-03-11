@@ -3,7 +3,7 @@ package org.parte1.Model.Services;
 public class SEDEXService implements TipoEntrega {
 
     @Override
-    public Double calcularValorDoEnvio(Double PesoPedido) {
+    public static Double calcularValorDoEnvio(Double PesoPedido) {
         double quinhentosGramas = 0.5;
         double valorEnvio = 0.0;
         if(PesoPedido <= quinhentosGramas){
