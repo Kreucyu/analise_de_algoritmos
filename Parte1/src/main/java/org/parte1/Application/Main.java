@@ -1,17 +1,30 @@
 package org.parte1.Application;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import org.parte1.Model.Entities.Pedido;
+import org.parte1.Model.Entities.Produto;
+import org.parte1.Model.Entities.TiposDeEntrega;
+
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Produto produto1 = new Produto("O Senhor dos Anéis", 20.0, 0.3);
+        Produto produto2 = new Produto("Holly", 30.0, 0.4);
+        Produto produto3 = new Produto("Alice no País das Maravilhas", 15.0, 0.2);
+        Produto produto4 = new Produto("It a Coisa", 50.0, 0.8);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        ArrayList<Produto> produtos = new ArrayList<Produto>();
+        produtos.add(produto1);
+        produtos.add(produto2);
+        produtos.add(produto3);
+        produtos.add(produto4);
+        Pedido pedido1 = new Pedido(1, produtos, TiposDeEntrega.SEDEX);
+        System.out.println(pedido1.toString());
+        Pedido pedido2 = new Pedido(2, produtos, TiposDeEntrega.PAC);
+        System.out.println(pedido2.toString());
+        Pedido pedido3 = new Pedido(3, produtos, TiposDeEntrega.RETIRADA);
+        System.out.println(pedido3.toString());
+
+
     }
 }

@@ -8,13 +8,14 @@ import java.util.ArrayList;
 
 public class CalculadoraDeValorDoPedido {
 
-    public static Double calcularValorDoPedido(ArrayList<Produto> produtos, TiposDeEntrega tipoDeEntrega)
+    public Double calcularValorDoPedido(ArrayList<Produto> produtos, TiposDeEntrega tipoDeEntrega)
     {
+        CalculadoraDeValorDeEntrega calculadoraDeValorDeEntrega = new CalculadoraDeValorDeEntrega();
         Double totalPedido = 0.0;
         for (Produto produto : produtos) {
             totalPedido += produto.getValorProduto();
         }
-        totalPedido += CalculadoraDeValorDeEntrega.calcularEntrega(produtos, tipoDeEntrega);
+        totalPedido += calculadoraDeValorDeEntrega.calcularEntrega(produtos, tipoDeEntrega);
         return totalPedido;
     }
 

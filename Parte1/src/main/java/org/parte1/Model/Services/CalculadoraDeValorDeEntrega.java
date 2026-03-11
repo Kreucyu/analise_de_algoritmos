@@ -7,16 +7,19 @@ import java.util.ArrayList;
 
 public class CalculadoraDeValorDeEntrega {
 
-    public static Double calcularEntrega(ArrayList<Produto> produtos, TiposDeEntrega tipoDeEntrega)
+    public Double calcularEntrega(ArrayList<Produto> produtos, TiposDeEntrega tipoDeEntrega)
     {
         double valorDaEntrega = 0.0;
+        CalculadoraDePeso calculadoraDePeso = new CalculadoraDePeso();
         switch (tipoDeEntrega) {
             case SEDEX -> {
-                valorDaEntrega = SEDEXService.calcularValorDoEnvio(CalculadoraDePeso.calcularPeso(produtos));
+                SEDEXService envio = new SEDEXService();
+                valorDaEntrega = envio.calcularValorDoEnvio(calculadoraDePeso.calcularPeso(produtos));
                 return valorDaEntrega;
             }
             case PAC -> {
-                valorDaEntrega = PACService.calcularValorDoEnvio(CalculadoraDePeso.calcularPeso(produtos));
+                PACService envio = new PACService();
+                valorDaEntrega = envio.calcularValorDoEnvio(calculadoraDePeso.calcularPeso(produtos));
                 return valorDaEntrega;
             }
             case RETIRADA -> {

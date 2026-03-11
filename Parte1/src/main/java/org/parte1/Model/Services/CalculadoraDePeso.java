@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CalculadoraDePeso {
 
-    public static Double calcularPeso(ArrayList<Produto> produtos){
+    public Double calcularPeso(ArrayList<Produto> produtos){
         double pesoTotalDeProdutos = 0.0;
         for(Produto produto : produtos){
             pesoTotalDeProdutos += produto.getPesoProduto();
