@@ -17,19 +17,19 @@ public class Pedido {
         return _idPedido;
     }
 
-    public Double calcularValorDoPedido(ArrayList<Produto> produtos, TiposDeEntrega tipoDeEntrega)
+    public Double calcularValorDoPedido()
     {
         Double totalPedido = 0.0;
-        for (Produto produto : produtos) {
+        for (Produto produto : _listaDeProdutos) {
             totalPedido += produto.getValorProduto();
         }
-        totalPedido += tipoDeEntrega.criar().calcularValorDoEnvio(calcularPeso(produtos));
+        totalPedido += _tipoDeEntrega.criar().calcularValorDoEnvio(calcularPeso());
         return totalPedido;
     }
 
-    public Double calcularPeso(ArrayList<Produto> produtos){
+    public Double calcularPeso(){
         double pesoTotalDeProdutos = 0.0;
-        for(Produto produto : produtos){
+        for(Produto produto : _listaDeProdutos){
             pesoTotalDeProdutos += produto.getPesoProduto();
         }
         return pesoTotalDeProdutos;
@@ -43,8 +43,8 @@ public class Pedido {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("N° " + get_idPedido() + ", ");
-        sb.append("Peso: " + String.format("%.2f", calcularPeso(_listaDeProdutos)) + "Kg, ");
-        sb.append("Valor: R$" + calcularValorDoPedido(_listaDeProdutos, _tipoDeEntrega));
+        sb.append("Peso: " + String.format("%.2f", calcularPeso()) + "Kg, ");
+        sb.append("Valor: R$" + calcularValorDoPedido());
         sb.append("\nLista de produtos: ");
         int counter = 0;
         for (Produto produto : _listaDeProdutos) {
