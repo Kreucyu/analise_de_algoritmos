@@ -1,5 +1,7 @@
 package org.parte1.Model.Services;
 
+import org.parte1.Model.Exceptions.PACIllegalWeightException;
+
 public class PACService implements TipoEntrega {
     private static final double UM_QUILO = 1.0;
     private static final double DOIS_QUILOS = 2.0;
@@ -18,7 +20,7 @@ public class PACService implements TipoEntrega {
             valorEnvio = PRECO_ATE_DOIS_QUILOS;
             return valorEnvio;
         }
-        throw new IllegalArgumentException("\nNão é possível fazer entregas PAC acima de 2Kg!");
+        throw new PACIllegalWeightException();
     }
 }
 
