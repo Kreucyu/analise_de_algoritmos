@@ -39,7 +39,7 @@ public class Main {
         pedido3.adicionarProduto(produto3);
         pedido3.adicionarProduto(produto4);
         System.out.println(pedido3.toString());
-        
+
         Produto produtoTeste = new Produto("Percy Jackson e o Ladrão de Raios", 34.5, 2.5);
         Pedido pedido4 = new Pedido(4,TiposDeEntrega.PAC);
         pedido4.adicionarProduto(produtoTeste);
