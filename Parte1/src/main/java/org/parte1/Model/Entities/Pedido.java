@@ -1,8 +1,5 @@
 package org.parte1.Model.Entities;
 
-import org.parte1.Model.Services.CalculadoraDePeso;
-import org.parte1.Model.Services.CalculadoraDeValorDoPedido;
-
 import java.util.ArrayList;
 
 public class Pedido {
@@ -20,14 +17,22 @@ public class Pedido {
         return _idPedido;
     }
 
-    public Double get_valorPedido() {
-        CalculadoraDeValorDoPedido calculadora = new CalculadoraDeValorDoPedido();
-        return calculadora.calcularValorDoPedido(_listaDeProdutos, _tipoDeEntrega);
+    public Double calcularValorDoPedido(ArrayList<Produto> produtos, TiposDeEntrega tipoDeEntrega)
+    {
+        Double totalPedido = 0.0;
+        for (Produto produto : produtos) {
+            totalPedido += produto.getValorProduto();
+        }
+        totalPedido += tipoDeEntrega.criar().calcularValorDoEnvio(calcularPeso(produtos));
+        return totalPedido;
     }
 
-    public Double get_pesoPedido() {
-        CalculadoraDePeso calculadora = new CalculadoraDePeso();
-        return calculadora.calcularPeso(_listaDeProdutos);
+    public Double calcularPeso(ArrayList<Produto> produtos){
+        double pesoTotalDeProdutos = 0.0;
+        for(Produto produto : produtos){
+            pesoTotalDeProdutos += produto.getPesoProduto();
+        }
+        return pesoTotalDeProdutos;
     }
 
     public TiposDeEntrega get_tipoDeEntrega() {
@@ -37,9 +42,9 @@ public class Pedido {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("N° " + _idPedido + ", ");
-        sb.append("Peso: " + String.format("%.2f", get_pesoPedido()) + "Kg, ");
-        sb.append("Valor: R$" + get_valorPedido());
+        sb.append("N° " + get_idPedido() + ", ");
+        sb.append("Peso: " + String.format("%.2f", calcularPeso(_listaDeProdutos)) + "Kg, ");
+        sb.append("Valor: R$" + calcularValorDoPedido(_listaDeProdutos, _tipoDeEntrega));
         sb.append("\nLista de produtos: ");
         int counter = 0;
         for (Produto produto : _listaDeProdutos) {

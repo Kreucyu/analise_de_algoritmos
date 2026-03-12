@@ -1,21 +1,25 @@
 package org.parte1.Model.Services;
 
 public class PACService implements TipoEntrega {
+    private static final double UM_QUILO = 1.0;
+    private static final double DOIS_QUILOS = 2.0;
+    private static final double PRECO_ATE_UM_QUILO = 10.0;
+    private static final double PRECO_ATE_DOIS_QUILOS = 15.0;
+
     @Override
     public Double calcularValorDoEnvio(Double PesoPedido) {
         double valorEnvio = 0.0;
 
-        double umQuilo = 1.0;
-        if (PesoPedido <= umQuilo) {
-            valorEnvio = 10.0;
+        if (PesoPedido <= UM_QUILO) {
+            valorEnvio = PRECO_ATE_UM_QUILO;
             return valorEnvio;
         }
-        double doisQuilos = 2.0;
-        if (PesoPedido >= umQuilo && PesoPedido <= doisQuilos) {
-            valorEnvio = 15.0;
+        if (PesoPedido >= UM_QUILO && PesoPedido <= DOIS_QUILOS) {
+            valorEnvio = PRECO_ATE_DOIS_QUILOS;
             return valorEnvio;
         }
-        System.out.println("\nNão é possível fazer entregas acima de 2Kg!");
-        return valorEnvio;
+        throw new IllegalArgumentException("\nNão é possível fazer entregas PAC acima de 2Kg!");
     }
 }
+
+
