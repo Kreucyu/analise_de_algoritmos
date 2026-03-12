@@ -66,3 +66,9 @@ Tratamento de Exceções
 Testes
 
     Foram criados testes unitários utilizando JUnit para validar o funcionamento das regras de cálculo de entrega e garantir o comportamento esperado do sistema.
+
+---
+
+Diagrama de Classes
+
+![Diagrama UML](uml.png)
