@@ -13,16 +13,25 @@ public class Main {
         Produto produto3 = new Produto("Alice no País das Maravilhas", 15.0, 0.2);
         Produto produto4 = new Produto("It a Coisa", 50.0, 0.8);
 
-        ArrayList<Produto> produtos = new ArrayList<Produto>();
-        produtos.add(produto1);
-        produtos.add(produto2);
-        produtos.add(produto3);
-        produtos.add(produto4);
-        Pedido pedido1 = new Pedido(1, produtos, TiposDeEntrega.SEDEX);
+        Pedido pedido1 = new Pedido(1, TiposDeEntrega.SEDEX);
+        pedido1.adicionarProduto(produto1);
+        pedido1.adicionarProduto(produto2);
+        pedido1.adicionarProduto(produto3);
+        pedido1.adicionarProduto(produto4);
         System.out.println(pedido1.toString());
-        Pedido pedido2 = new Pedido(2, produtos, TiposDeEntrega.PAC);
+
+        Pedido pedido2 = new Pedido(2,TiposDeEntrega.PAC);
+        pedido2.adicionarProduto(produto1);
+        pedido2.adicionarProduto(produto2);
+        pedido2.adicionarProduto(produto3);
+        pedido2.adicionarProduto(produto4);
         System.out.println(pedido2.toString());
-        Pedido pedido3 = new Pedido(3, produtos, TiposDeEntrega.RETIRADA);
+
+        Pedido pedido3 = new Pedido(3,TiposDeEntrega.RETIRADA);
+        pedido3.adicionarProduto(produto1);
+        pedido3.adicionarProduto(produto2);
+        pedido3.adicionarProduto(produto3);
+        pedido3.adicionarProduto(produto4);
         System.out.println(pedido3.toString());
 
 
