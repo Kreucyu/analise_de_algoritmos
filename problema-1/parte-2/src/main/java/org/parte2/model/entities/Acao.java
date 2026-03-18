@@ -31,13 +31,28 @@ public class Acao extends Observable {
 
     public void adicionarOrdem(Ordem ordem) {
         this.listaDeOrdens.add(ordem);
-        valorAcao = ordem.getValorOrdem();
-        setChanged();
-        notifyObservers(valorAcao);
+        realizarTransacao(ordem);
     }
 
     private void removerOrdem(Ordem ordem) {
         this.listaDeOrdens.remove(ordem);
+
+    }
+
+    private void realizarTransacao(Ordem ordem) {
+        for (Ordem ordens : this.listaDeOrdens) {
+            if(ordem.getValorOrdem().equals(ordem.getValorOrdem()) && !(ordem.getTipoOrdem().equals(ordem.getTipoOrdem()))) {
+                System.out.println("Transação efetuada com sucesso!");
+                this.valorAcao = ordem.getValorOrdem();
+                setChanged();
+                removerOrdem(ordem);
+                removerOrdem(ordens);
+                break;
+            }
+        }
+        if (hasChanged()) {
+            notifyObservers(getValorAcao());
+        }
     }
 
     @Override
