@@ -1,6 +1,9 @@
 package org.parte2.model.entities;
 
-public class Investidor {
+import java.util.Observable;
+import java.util.Observer;
+
+public class Investidor implements Observer {
     private String nomeInvestidor;
 
     public Investidor(String nomeInvestidor) {
@@ -16,8 +19,8 @@ public class Investidor {
         Ordem ordem = new Ordem(this.nomeInvestidor, tipoOrdem, valorOrdem);
     }
 
-    public void registrarEmUmaAcao() {
-        Acao acao = new Acao();
+    @Override
+    public void update(Observable o, Object arg) {
 
     }
 }
