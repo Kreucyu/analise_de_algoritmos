@@ -19,7 +19,7 @@ public class Investidor implements Observer {
     }
 
     public void registrarOrdem(TipoOrdem tipoOrdem, BigDecimal valorAcao) {
-        Ordem ordem = new Ordem(this, tipoOrdem, valorAcao);
+        Ordem ordem = new Ordem(getNomeInvestidor(), tipoOrdem, valorAcao);
     }
 
     public void registrarEmUmaAcao() {
@@ -38,5 +38,12 @@ public class Investidor implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         System.out.println("A Ação " + o + ", teve seu valor alterado para: R$" + arg);
+    }
+
+    @Override
+    public String toString() {
+        return "Investidor{" +
+                "nomeInvestidor='" + nomeInvestidor + '\'' +
+                '}';
     }
 }

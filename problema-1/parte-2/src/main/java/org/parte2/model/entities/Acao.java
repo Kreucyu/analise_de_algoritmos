@@ -35,4 +35,17 @@ public class Acao extends Observable {
         setChanged();
         notifyObservers(valorAcao);
     }
+
+    private void removerOrdem(Ordem ordem) {
+        this.listaDeOrdens.remove(ordem);
+    }
+
+    @Override
+    public String toString() {
+        return "Acao{" +
+                "nomeAcao='" + nomeAcao + '\'' +
+                ", valorAcao=" + valorAcao +
+                ", listaDeOrdens=" + listaDeOrdens +
+                '}';
+    }
 }
