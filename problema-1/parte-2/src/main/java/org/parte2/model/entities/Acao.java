@@ -3,8 +3,10 @@ package org.parte2.model.entities;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Acao {
+public class Acao extends Observable {
     private String nomeAcao;
     private BigDecimal valorAcao;
     private List<Ordem> listaDeOrdens;
@@ -30,7 +32,7 @@ public class Acao {
     public void adicionarOrdem(Ordem ordem) {
         this.listaDeOrdens.add(ordem);
         valorAcao = ordem.getValorOrdem();
+        setChanged();
+        notifyObservers(valorAcao);
     }
-
-
 }

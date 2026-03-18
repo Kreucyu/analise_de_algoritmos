@@ -1,11 +1,10 @@
 package org.parte2.model.services;
 
 import org.parte2.model.entities.Acao;
-import java.util.Observable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SistemaDeAcoes extends Observable {
+public class SistemaDeAcoes{
     private List<Acao> ListaDeAcoes;
 
     public SistemaDeAcoes() {
