@@ -64,4 +64,4 @@ Foram criados testes unitários utilizando JUnit para validar:
 
 Diagrama de Classes
 
-![Diagrama UML](uml.png)
+![Diagrama UML](uml-pt2.png)
