@@ -19,7 +19,7 @@ public class Investidor implements Observer {
     }
 
     public void registrarOrdem(TipoOrdem tipoOrdem, BigDecimal valorAcao) {
-        Ordem ordem = new Ordem(getNomeInvestidor(), tipoOrdem, valorAcao);
+        Ordem ordem = new Ordem(this, tipoOrdem, valorAcao);
     }
 
     public void registrarEmUmaAcao() {

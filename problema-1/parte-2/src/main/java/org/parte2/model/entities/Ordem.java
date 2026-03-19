@@ -3,18 +3,18 @@ package org.parte2.model.entities;
 import java.math.BigDecimal;
 
 public class Ordem {
-    private String NomeInvestidor;
+    private Investidor investidor;
     private TipoOrdem tipoOrdem;
     private BigDecimal valorOrdem;
 
-    public Ordem(String NomeInvestidor, TipoOrdem tipoOrdem, BigDecimal valorOrdem) {
-        this.NomeInvestidor = NomeInvestidor;
+    public Ordem(Investidor investidor, TipoOrdem tipoOrdem, BigDecimal valorOrdem) {
+        this.investidor = investidor;
         this.tipoOrdem = tipoOrdem;
         this.valorOrdem = valorOrdem;
     }
 
     public String getNomeInvestidor() {
-        return NomeInvestidor;
+        return investidor.getNomeInvestidor();
     }
 
     public TipoOrdem getTipoOrdem() {
@@ -28,7 +28,7 @@ public class Ordem {
     @Override
     public String toString() {
         return "Ordem{" +
-                "NomeInvestidor='" + NomeInvestidor + '\'' +
+                "nomeInvestidor='" + investidor.getNomeInvestidor() + '\'' +
                 ", tipoOrdem=" + tipoOrdem +
                 ", valorOrdem=" + valorOrdem +
                 '}';
