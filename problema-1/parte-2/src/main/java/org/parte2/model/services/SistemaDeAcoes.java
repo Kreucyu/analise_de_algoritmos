@@ -25,9 +25,9 @@ public class SistemaDeAcoes{
         this.ListaDeAcoes.add(acao);
     }
 
-    public BigDecimal realizarTransacao(List<Ordem> ordensDeCompra, Map<BigDecimal, List<Ordem>> ordensDeVenda, Acao acao) {
-        for (Ordem ordem : ordensDeCompra) {
-            List<Ordem> vendasPossiveis = ordensDeVenda.get(ordem.getValorOrdem());
+    public BigDecimal realizarTransacao(Acao acao) {
+        for (Ordem ordem : acao.getOrdensDeCompra()) {
+            List<Ordem> vendasPossiveis = acao.getOrdensDeVenda().get(ordem.getValorOrdem());
             if(vendasPossiveis == null){
                 continue;
             }

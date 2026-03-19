@@ -32,7 +32,7 @@ public class Acao extends Observable {
 
     public void adicionarOrdem(Ordem ordem) {
         this.listaDeOrdens.add(ordem);
-        BigDecimal valorAcao = sistemaDeAcoes.realizarTransacao(getOrdensDeCompra(), getOrdensDeVenda(), this);
+        BigDecimal valorAcao = sistemaDeAcoes.realizarTransacao(this);
         if (valorAcao != null) {
             this.valorAcao = valorAcao;
             setChanged();
@@ -45,14 +45,14 @@ public class Acao extends Observable {
         this.listaDeOrdens.remove(ordem);
     }
 
-    private List<Ordem> getOrdensDeCompra() {
+    public List<Ordem> getOrdensDeCompra() {
         List<Ordem> ordensDeCompra = this.listaDeOrdens.stream()
                 .filter(ordem -> ordem.getTipoOrdem().equals(TipoOrdem.COMPRA))
                 .toList();
         return ordensDeCompra;
     }
 
-    private Map<BigDecimal, List<Ordem>> getOrdensDeVenda() {
+    public Map<BigDecimal, List<Ordem>> getOrdensDeVenda() {
         Map<BigDecimal, List<Ordem>> ordensDeVenda = new HashMap<>();
         for (Ordem ordem : this.listaDeOrdens) {
             if(ordem.getTipoOrdem().equals(TipoOrdem.VENDA)){
