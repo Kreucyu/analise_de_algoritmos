@@ -1,20 +1,21 @@
 package org.parte2.model.entities;
 
+import org.parte2.model.services.SistemaDeAcoes;
+
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class Acao extends Observable {
     private String nomeAcao;
     private BigDecimal valorAcao;
     private List<Ordem> listaDeOrdens;
+    private SistemaDeAcoes sistemaDeAcoes;
 
     public Acao(String nomeAcao, BigDecimal valorAcao) {
         this.nomeAcao = nomeAcao;
         this.valorAcao = valorAcao;
         this.listaDeOrdens = new ArrayList<>();
+        this.sistemaDeAcoes = new SistemaDeAcoes();
     }
 
     public String getNomeAcao() {
@@ -31,28 +32,36 @@ public class Acao extends Observable {
 
     public void adicionarOrdem(Ordem ordem) {
         this.listaDeOrdens.add(ordem);
-        realizarTransacao(ordem);
+        BigDecimal valorAcao = sistemaDeAcoes.realizarTransacao(getOrdensDeCompra(), getOrdensDeVenda(), this);
+        if (valorAcao != null) {
+            this.valorAcao = valorAcao;
+            setChanged();
+            notifyObservers(valorAcao);
+        }
+
     }
 
-    private void removerOrdem(Ordem ordem) {
+    public void removerOrdem(Ordem ordem) {
         this.listaDeOrdens.remove(ordem);
-
     }
 
-    private void realizarTransacao(Ordem ordem) {
-        for (Ordem ordens : this.listaDeOrdens) {
-            if(ordem.getValorOrdem().equals(ordem.getValorOrdem()) && !(ordem.getTipoOrdem().equals(ordem.getTipoOrdem()))) {
-                System.out.println("Transação efetuada com sucesso!");
-                this.valorAcao = ordem.getValorOrdem();
-                setChanged();
-                removerOrdem(ordem);
-                removerOrdem(ordens);
-                break;
+    private List<Ordem> getOrdensDeCompra() {
+        List<Ordem> ordensDeCompra = this.listaDeOrdens.stream()
+                .filter(ordem -> ordem.getTipoOrdem().equals(TipoOrdem.COMPRA))
+                .toList();
+        return ordensDeCompra;
+    }
+
+    private Map<BigDecimal, List<Ordem>> getOrdensDeVenda() {
+        Map<BigDecimal, List<Ordem>> ordensDeVenda = new HashMap<>();
+        for (Ordem ordem : this.listaDeOrdens) {
+            if(ordem.getTipoOrdem().equals(TipoOrdem.VENDA)){
+                ordensDeVenda
+                        .computeIfAbsent(ordem.getValorOrdem(), k -> new ArrayList<>())
+                        .add(ordem);
             }
         }
-        if (hasChanged()) {
-            notifyObservers(getValorAcao());
-        }
+        return ordensDeVenda;
     }
 
     @Override
