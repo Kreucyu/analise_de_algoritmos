@@ -13,9 +13,16 @@ public class SistemaDeAcoesTest {
     @Test
     void transacaoOk() {
         Acao acao = new Acao("VALE3", BigDecimal.valueOf(60));
+        SistemaDeAcoes sistema = new SistemaDeAcoes();
 
-        acao.adicionarOrdem(new Ordem("A", TipoOrdem.COMPRA, BigDecimal.valueOf(70)));
-        acao.adicionarOrdem(new Ordem("B", TipoOrdem.VENDA, BigDecimal.valueOf(70)));
+        Investidor i1 = new Investidor("A");
+        Investidor i2 = new Investidor("B");
+
+        sistema.adicionarOrdemEProcessar(acao,
+                new Ordem(i1, TipoOrdem.COMPRA, BigDecimal.valueOf(70)));
+
+        sistema.adicionarOrdemEProcessar(acao,
+                new Ordem(i2, TipoOrdem.VENDA, BigDecimal.valueOf(70)));
 
         assertEquals(BigDecimal.valueOf(70), acao.getValorAcao());
     }
@@ -23,9 +30,16 @@ public class SistemaDeAcoesTest {
     @Test
     void semTransacao() {
         Acao acao = new Acao("VALE3", BigDecimal.valueOf(60));
+        SistemaDeAcoes sistema = new SistemaDeAcoes();
 
-        acao.adicionarOrdem(new Ordem("A", TipoOrdem.COMPRA, BigDecimal.valueOf(70)));
-        acao.adicionarOrdem(new Ordem("B", TipoOrdem.VENDA, BigDecimal.valueOf(80)));
+        Investidor i1 = new Investidor("A");
+        Investidor i2 = new Investidor("B");
+
+        sistema.adicionarOrdemEProcessar(acao,
+                new Ordem(i1, TipoOrdem.COMPRA, BigDecimal.valueOf(70)));
+
+        sistema.adicionarOrdemEProcessar(acao,
+                new Ordem(i2, TipoOrdem.VENDA, BigDecimal.valueOf(80)));
 
         assertEquals(BigDecimal.valueOf(60), acao.getValorAcao());
     }
