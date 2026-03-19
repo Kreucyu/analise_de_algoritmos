@@ -25,19 +25,24 @@ public class SistemaDeAcoes{
         this.ListaDeAcoes.add(acao);
     }
 
-    public BigDecimal realizarTransacao(List<Ordem> ordensDeCompra, List<Ordem> ordensDeVenda, Acao acao) {
+    public BigDecimal realizarTransacao(List<Ordem> ordensDeCompra, Map<BigDecimal, List<Ordem>> ordensDeVenda, Acao acao) {
         for (Ordem ordem : ordensDeCompra) {
-            for(Ordem ordem2 : ordensDeVenda){
-                OrdensSelecionadas.computeIfAbsent()
+            List<Ordem> vendasPossiveis = ordensDeVenda.get(ordem.getValorOrdem());
+            if(vendasPossiveis == null){
+                continue;
             }
-            OrdensSelecionadas.put(ordem.getValorOrdem(), ordensDeVenda);
-            List<Ordem> ordensFiltradas = OrdensSelecionadas.get(ordem.getValorOrdem());
-            if (!ordensFiltradas.isEmpty()) {
-                acao.removerOrdem(ordensFiltradas.get(0));
+            Ordem vendaSelecionada = vendasPossiveis
+                    .stream()
+                    .filter(venda -> !venda.getNomeInvestidor().equals(ordem.getNomeInvestidor()))
+                    .findFirst()
+                    .orElse(null);
+            if(vendaSelecionada == null) {
+                continue;
+            }
+                acao.removerOrdem(vendaSelecionada);
                 acao.removerOrdem(ordem);
-                return ordem.getValorOrdem();
-                }
-            }
+                return  ordem.getValorOrdem();
+        }
         return null;
     }
 }
