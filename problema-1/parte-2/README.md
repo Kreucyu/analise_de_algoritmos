@@ -13,6 +13,7 @@ O sistema permite que realizemos transações de compra e venda de ações e tam
 Design Patterns Utilizados
 
 Observer
+
     O serviço de notificações foi implementado utilizando o padrão observer.
     Foi utilizado as classes padrões do java para isso (java.util.Observer e java.util.Observable), utilizando essas classes foi possível fazer o sistema de notificação ao observador quando uma ação é vendida.
 
@@ -47,4 +48,6 @@ Testes
 ---
 
 Diagrama de Classes
+
+![Diagrama UML](uml.png)
 
