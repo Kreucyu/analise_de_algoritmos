@@ -9,6 +9,6 @@ public class Main {
         HomeFacade homeFacade = new HomeFacade(new LampadaPhellipes(), new LampadaShoyuMi(),
                 new PersianaNatLight(), new PersianaSolarius(),
                 new ArCondicionadoGellaKaza(), new ArCondicionadoVentoBaumn());
-        
+
     }
 }
