@@ -54,16 +54,6 @@ public class HomeFacade {
         lampadaShoyuMi.desligar();
     }
 
-    public void ligarArCondicionado() {
-        arCondicionadoGellaKaza.ativar();
-        arCondicionadoVentoBaumn.ligar();
-
-    }
-
-    public void desligarArCondicionado() {
-        arCondicionadoGellaKaza.desativar();
-        arCondicionadoVentoBaumn.desligar();
-    }
 }
 
 
