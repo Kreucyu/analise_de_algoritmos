@@ -34,11 +34,17 @@ public class HomeFacade {
         estadoArCondicionado = new ArCondicionadoDesligado();
     }
 
-    public void modoSono() {
-
+    public void modoSono() throws Exception {
+        desligarArCondicionados();
+        desligarLampadas();
+        fecharPersianas();
     }
 
-    public void modoTrabalho() {
+    public void modoTrabalho() throws Exception {
+        acenderLampadas();
+        abrirPersianas();
+        ligarArCondicionados();
+        definirTemperaturaArCondicionado(25);
     }
 
     public void abrirPersianas() throws Exception {
@@ -71,8 +77,17 @@ public class HomeFacade {
         estadoArCondicionado = new ArCondicionadoDesligado();
     }
 
+    public void aumentarTemperaturaArCondicionados() {
+        estadoArCondicionado.aumentarTemperatura(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+    }
 
+    public void diminuirTemperaturaArCondiconados() {
+        estadoArCondicionado.diminuirTemperatura(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+    }
 
+    public void definirTemperaturaArCondicionado(int temperaturaDesejada) {
+        estadoArCondicionado.definirTemperatura(temperaturaDesejada, arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+    }
 }
 
 

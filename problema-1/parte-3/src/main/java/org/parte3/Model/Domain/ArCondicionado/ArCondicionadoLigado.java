@@ -18,17 +18,34 @@ public class ArCondicionadoLigado implements EstadoArCondicionado {
     }
 
     @Override
-    public void aumentarTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
+    public void aumentarTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
         arCondicionadoGellaKaza.aumentarTemperatura();
+        int novaTemperatura = arCondicionadoVentoBaumn.getTemperatura() + 1;
+        arCondicionadoVentoBaumn.definirTemperatura(novaTemperatura);
     }
 
     @Override
-    public void diminuirTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
+    public void diminuirTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+        arCondicionadoGellaKaza.diminuirTemperatura();
+        int novaTemperatura = arCondicionadoVentoBaumn.getTemperatura() - 1;
+        arCondicionadoVentoBaumn.definirTemperatura(novaTemperatura);
+    }
+
+    @Override
+    public void definirTemperatura(int temperatura, ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+        arCondicionadoVentoBaumn.definirTemperatura(temperatura);
+        int sentidoAjuste = arCondicionadoGellaKaza.getTemperatura() - temperatura;
+        while(arCondicionadoGellaKaza.getTemperatura() != temperatura) {
+            ajustarTemperatura(sentidoAjuste, arCondicionadoGellaKaza);
+        }
+    }
+
+    private void ajustarTemperatura(int sentidoAjuste, ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
+        if(sentidoAjuste < 0) {
+            arCondicionadoGellaKaza.aumentarTemperatura();
+            return;
+        }
         arCondicionadoGellaKaza.diminuirTemperatura();
     }
 
-    @Override
-    public void definirTemperatura(int temperatura, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
-        arCondicionadoVentoBaumn.definirTemperatura(temperatura);
-    }
 }

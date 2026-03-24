@@ -17,17 +17,17 @@ public class ArCondicionadoDesligado implements EstadoArCondicionado {
     }
 
     @Override
-    public void aumentarTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
+    public void aumentarTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
         throw new EstadoInvalidoException("O Ar Condicionado está desligado!");
     }
 
     @Override
-    public void diminuirTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
+    public void diminuirTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
         throw new EstadoInvalidoException("O Ar Condicionado está desligado!");
     }
 
     @Override
-    public void definirTemperatura(int temperatura,ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+    public void definirTemperatura(int temperatura,ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
         throw new EstadoInvalidoException("O Ar Condicionado está desligado!");
     }
 }
