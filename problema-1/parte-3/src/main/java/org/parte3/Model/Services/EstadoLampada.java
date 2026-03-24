@@ -1,6 +1,6 @@
 package org.parte3.Model.Services;
 
-public interface Lampada {
+public interface EstadoLampada {
     void ligar();
     void desligar();
 }

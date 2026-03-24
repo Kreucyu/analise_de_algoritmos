@@ -10,16 +10,13 @@ public class HomeFacade {
     private ArCondicionadoGellaKaza arCondicionadoGellaKaza;
     private ArCondicionadoVentoBaumn arCondicionadoVentoBaumn;
 
-    public HomeFacade(LampadaPhellipes lampadaPhellipes, LampadaShoyuMi lampadaShoyuMi,
-                      PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius,
-                      ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
-        this.arCondicionadoGellaKaza = arCondicionadoGellaKaza;
-        this.arCondicionadoVentoBaumn = arCondicionadoVentoBaumn;
-        this.lampadaPhellipes = lampadaPhellipes;
-        this.lampadaShoyuMi = lampadaShoyuMi;
-        this.persianaSolarius = persianaSolarius;
-        this.persianaNatLight = persianaNatLight;
-    }
+    public HomeFacade() {
+        arCondicionadoGellaKaza = new ArCondicionadoGellaKaza();
+        arCondicionadoVentoBaumn = new ArCondicionadoVentoBaumn();
+        lampadaPhellipes = new LampadaPhellipes();
+        lampadaShoyuMi = new LampadaShoyuMi();
+        persianaSolarius = new PersianaSolarius();
+        persianaNatLight = new PersianaNatLight(); }
 
     public void modoSono() {
 
