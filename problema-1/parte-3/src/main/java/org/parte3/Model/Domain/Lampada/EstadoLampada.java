@@ -1,4 +1,4 @@
-package org.parte3.Model.Entities;
+package org.parte3.Model.Domain.Lampada;
 
 import br.furb.analise.algoritmos.LampadaPhellipes;
 import br.furb.analise.algoritmos.LampadaShoyuMi;

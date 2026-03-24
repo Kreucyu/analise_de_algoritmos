@@ -1,33 +1,34 @@
-package org.parte3.Model.Entities;
+package org.parte3.Model.Domain.ArCondicionado;
 
 import br.furb.analise.algoritmos.ArCondicionadoGellaKaza;
 import br.furb.analise.algoritmos.ArCondicionadoVentoBaumn;
-import org.parte3.Model.Exceptions.ArCondicionadoDesligadoException;
+import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 
-public class ArCondicionadoDesligado implements EstadoArCondicionado {
+public class ArCondicionadoLigado implements EstadoArCondicionado {
 
     @Override
     public void ligar(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
-
+        throw new EstadoInvalidoException("O Ar Condicionado já está ligado");
     }
 
     @Override
     public void desligar(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
-        throw new ArCondicionadoDesligadoException("O Ar Condicionado já está desligado!");
+        arCondicionadoVentoBaumn.desligar();
+        arCondicionadoGellaKaza.desativar();
     }
 
     @Override
     public void aumentarTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
-        throw new ArCondicionadoDesligadoException("O Ar Condicionado está desligado!");
+        arCondicionadoGellaKaza.aumentarTemperatura();
     }
 
     @Override
     public void diminuirTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza) {
-        throw new ArCondicionadoDesligadoException("O Ar Condicionado está desligado!");
+        arCondicionadoGellaKaza.diminuirTemperatura();
     }
 
     @Override
-    public void definirTemperatura(int temperatura,ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
-        throw new ArCondicionadoDesligadoException("O Ar Condicionado está desligado!");
+    public void definirTemperatura(int temperatura, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+        arCondicionadoVentoBaumn.definirTemperatura(temperatura);
     }
 }

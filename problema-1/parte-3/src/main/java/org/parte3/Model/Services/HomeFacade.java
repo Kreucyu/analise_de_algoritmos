@@ -1,7 +1,15 @@
 package org.parte3.Model.Services;
 
 import br.furb.analise.algoritmos.*;
-import org.parte3.Model.Entities.*;
+import org.parte3.Model.Domain.ArCondicionado.ArCondicionadoDesligado;
+import org.parte3.Model.Domain.ArCondicionado.ArCondicionadoLigado;
+import org.parte3.Model.Domain.ArCondicionado.EstadoArCondicionado;
+import org.parte3.Model.Domain.Lampada.EstadoLampada;
+import org.parte3.Model.Domain.Lampada.LampadaDesligada;
+import org.parte3.Model.Domain.Lampada.LampadaLigada;
+import org.parte3.Model.Domain.Persiana.EstadoPersiana;
+import org.parte3.Model.Domain.Persiana.PersianaAberta;
+import org.parte3.Model.Domain.Persiana.PersianaFechada;
 
 public class HomeFacade {
     private LampadaPhellipes lampadaPhellipes;

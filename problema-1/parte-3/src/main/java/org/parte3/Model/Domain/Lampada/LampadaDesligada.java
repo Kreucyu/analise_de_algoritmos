@@ -1,8 +1,8 @@
-package org.parte3.Model.Entities;
+package org.parte3.Model.Domain.Lampada;
 
 import br.furb.analise.algoritmos.LampadaPhellipes;
 import br.furb.analise.algoritmos.LampadaShoyuMi;
-import org.parte3.Model.Exceptions.LampadaApagadaException;
+import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 
 public class LampadaDesligada implements EstadoLampada {
     @Override
@@ -13,6 +13,6 @@ public class LampadaDesligada implements EstadoLampada {
 
     @Override
     public void desligar(LampadaPhellipes lampadaPhellipes, LampadaShoyuMi lampadaShoyuMi) {
-        throw new LampadaApagadaException("A lâmpada já está apagada!");
+        throw new EstadoInvalidoException("A lâmpada já está apagada!");
     }
 }

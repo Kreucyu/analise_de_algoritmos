@@ -1,4 +1,4 @@
-package org.parte3.Model.Entities;
+package org.parte3.Model.Domain.Persiana;
 
 import br.furb.analise.algoritmos.PersianaNatLight;
 import br.furb.analise.algoritmos.PersianaSolarius;
