@@ -1,13 +1,21 @@
 package org.parte3.Model.Services;
 
+import br.furb.analise.algoritmos.PersianaNatLight;
+import br.furb.analise.algoritmos.PersianaSolarius;
+import org.parte3.Model.Exceptions.PersianaAbertaException;
+
 public class PersianaAberta implements EstadoPersiana {
     @Override
-    public void abrir() throws Exception {
-        throw new PersinadaAbertaException("A persiana já está aberta!");
+    public void abrir(PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius) throws Exception {
+        throw new PersianaAbertaException("A persiana já está aberta!");
     }
 
     @Override
-    public void fechar() throws Exception {
-
+    public void fechar(PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius) throws Exception {
+        persianaSolarius.descerPersiana();
+        if(persianaNatLight.estaPalhetaErguida()) {
+            persianaNatLight.descerPalheta();
+        }
+        persianaNatLight.fecharPalheta();
     }
 }
