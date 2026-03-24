@@ -1,4 +1,4 @@
-package org.parte3.Model.Services;
+package org.parte3.Model.Entities;
 
 import br.furb.analise.algoritmos.ArCondicionadoGellaKaza;
 import br.furb.analise.algoritmos.ArCondicionadoVentoBaumn;

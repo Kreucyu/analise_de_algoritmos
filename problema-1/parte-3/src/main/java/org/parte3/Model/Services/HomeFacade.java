@@ -1,6 +1,7 @@
 package org.parte3.Model.Services;
 
 import br.furb.analise.algoritmos.*;
+import org.parte3.Model.Entities.*;
 
 public class HomeFacade {
     private LampadaPhellipes lampadaPhellipes;
