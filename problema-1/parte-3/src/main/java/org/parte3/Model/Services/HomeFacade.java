@@ -9,6 +9,9 @@ public class HomeFacade {
     private PersianaSolarius persianaSolarius;
     private ArCondicionadoGellaKaza arCondicionadoGellaKaza;
     private ArCondicionadoVentoBaumn arCondicionadoVentoBaumn;
+    private EstadoPersiana estadoPersiana;
+    private EstadoLampada estadoLampada;
+    private EstadoArCondicionado estadoArCondicionado;
 
     public HomeFacade() {
         arCondicionadoGellaKaza = new ArCondicionadoGellaKaza();
@@ -16,7 +19,11 @@ public class HomeFacade {
         lampadaPhellipes = new LampadaPhellipes();
         lampadaShoyuMi = new LampadaShoyuMi();
         persianaSolarius = new PersianaSolarius();
-        persianaNatLight = new PersianaNatLight(); }
+        persianaNatLight = new PersianaNatLight();
+        estadoPersiana = new PersianaFechada();
+        estadoLampada = new LampadaDesligada();
+        estadoArCondicionado = new ArCondicionadoDesligado();
+    }
 
     public void modoSono() {
 
@@ -26,30 +33,36 @@ public class HomeFacade {
     }
 
     public void abrirPersianas() throws Exception {
-        if(!persianaNatLight.estaPalhetaAberta()){
-            persianaNatLight.abrirPalheta();
-        }
-        persianaNatLight.subirPalheta();
-        persianaSolarius.subirPersiana();
+        estadoPersiana.abrir(persianaNatLight, persianaSolarius);
+        estadoPersiana = new PersianaAberta();
     }
 
     public void fecharPersianas() throws Exception {
-        if(persianaNatLight.estaPalhetaErguida()){
-            persianaNatLight.descerPalheta();
-        }
-        persianaNatLight.fecharPalheta();
-        persianaSolarius.descerPersiana();
+        estadoPersiana.fechar(persianaNatLight, persianaSolarius);
+        estadoPersiana = new PersianaFechada();
     }
 
     public void acenderLampadas() {
-        lampadaPhellipes.setIntensidade(100);
-        lampadaShoyuMi.ligar();
+        estadoLampada.ligar(lampadaPhellipes, lampadaShoyuMi);
+        estadoLampada = new LampadaLigada();
     }
 
     public void desligarLampadas() {
-        lampadaPhellipes.setIntensidade(0);
-        lampadaShoyuMi.desligar();
+        estadoLampada.desligar(lampadaPhellipes, lampadaShoyuMi);
+        estadoLampada = new LampadaDesligada();
     }
+
+    public void ligarArCondicionados() {
+        estadoArCondicionado.ligar(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+        estadoArCondicionado = new ArCondicionadoLigado();
+    }
+
+    public void desligarArCondicionados() {
+        estadoArCondicionado.desligar(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+        estadoArCondicionado = new ArCondicionadoDesligado();
+    }
+
+
 
 }
 
