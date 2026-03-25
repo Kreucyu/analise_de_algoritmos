@@ -4,6 +4,6 @@ import br.furb.analise.algoritmos.PersianaNatLight;
 import br.furb.analise.algoritmos.PersianaSolarius;
 
 public interface EstadoPersiana {
-    void abrir(PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius) throws Exception;
-    void fechar(PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius) throws Exception;
+    void abrir(PersianaContext persianaContext) throws Exception;
+    void fechar(PersianaContext persianaContext) throws Exception;
 }

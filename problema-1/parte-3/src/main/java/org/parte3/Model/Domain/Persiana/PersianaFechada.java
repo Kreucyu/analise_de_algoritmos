@@ -7,12 +7,14 @@ import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 public class PersianaFechada implements EstadoPersiana {
 
     @Override
-    public void abrir(PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius) throws Exception {
-
+    public void abrir(PersianaContext persianaContext) throws Exception {
+        for(PersianaCasa persiana : persianaContext.listarPersianas()) {
+            persiana.abrir();
+        }
     }
 
     @Override
-    public void fechar(PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius) throws Exception {
+    public void fechar(PersianaContext persianaContext) throws Exception {
         throw new EstadoInvalidoException("A persiana já está fechada!");
     }
 }
