@@ -11,19 +11,19 @@ public class PersianaContext {
         this.estadoAtual = new PersianaFechada();
     }
 
-    public void abrir() throws Exception {
+    public void abrir(){
         estadoAtual.abrir(this);
     }
 
-    public void fechar() throws Exception {
+    public void fechar(){
         estadoAtual.fechar(this);
-    }
-
-    public void definirNovoEstado(EstadoPersiana novoEstado) {
-        this.estadoAtual = novoEstado;
     }
 
     public List<PersianaCasa> getPersianas() {
         return this.persianas;
+    }
+
+    public void setNovoEstado(EstadoPersiana novoEstado) {
+        this.estadoAtual = novoEstado;
     }
 }

@@ -8,7 +8,7 @@ public class ArCondicionadoDesligado implements EstadoArCondicionado {
         for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
             arCondicionado.ligar();
         }
-        arCondicionadoContext.definirNovoEstado(new ArCondicionadoLigado());
+        arCondicionadoContext.setNovoEstado(new ArCondicionadoLigado());
     }
 
     @Override

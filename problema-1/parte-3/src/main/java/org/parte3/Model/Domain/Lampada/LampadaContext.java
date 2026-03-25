@@ -22,7 +22,7 @@ public class LampadaContext {
         return this.lampadas;
     }
 
-    public void definirNovoEstado (EstadoLampada novoEstado) {
+    public void setNovoEstado(EstadoLampada novoEstado) {
         this.estadoLampada = novoEstado;
     }
 }

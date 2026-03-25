@@ -36,7 +36,7 @@ public class ArCondicionadoContext {
         return this.arCondicionados;
     }
 
-    public void definirNovoEstado(EstadoArCondicionado novoEstado) {
+    public void setNovoEstado(EstadoArCondicionado novoEstado) {
         this.estadoArCondicionado = novoEstado;
     }
 

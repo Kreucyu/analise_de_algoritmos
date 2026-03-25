@@ -1,6 +1,11 @@
 package org.parte3.Model.Services;
 
-import br.furb.analise.algoritmos.*;
+import br.furb.analise.algoritmos.ArCondicionadoGellaKaza;
+import br.furb.analise.algoritmos.ArCondicionadoVentoBaumn;
+import br.furb.analise.algoritmos.LampadaPhellipes;
+import br.furb.analise.algoritmos.LampadaShoyuMi;
+import br.furb.analise.algoritmos.PersianaNatLight;
+import br.furb.analise.algoritmos.PersianaSolarius;
 import org.parte3.Model.Domain.ArCondicionado.*;
 import org.parte3.Model.Domain.Lampada.*;
 import org.parte3.Model.Domain.Persiana.*;
@@ -8,26 +13,17 @@ import org.parte3.Model.Domain.Persiana.*;
 import java.util.List;
 
 public class HomeFacade {
-    private LampadaPhellipesAdapter lampadaPhellipesAdapter;
-    private LampadaShoyuMiAdapter lampadaShoyuMiAdapter;
-    private PersianaNatLightAdapter persianaNatLightAdapter;
-    private PersianaSolariusAdapter persianaSolariusAdapter;
-    private ArCondicionadoGellaKazaAdapter arCondicionadoGellaKazaAdapter;
-    private ArCondicionadoVentoBaumnAdapter arCondicionadoVentoBaumnAdapter;
     private ArCondicionadoContext arCondicionadoContext;
     private LampadaContext lampadaContext;
     private PersianaContext persianaContext;
 
     public HomeFacade() {
-        arCondicionadoGellaKazaAdapter = new ArCondicionadoGellaKazaAdapter(new ArCondicionadoGellaKaza());
-        arCondicionadoVentoBaumnAdapter = new ArCondicionadoVentoBaumnAdapter(new ArCondicionadoVentoBaumn());
-        lampadaPhellipesAdapter = new LampadaPhellipesAdapter(new LampadaPhellipes());
-        lampadaShoyuMiAdapter = new LampadaShoyuMiAdapter(new LampadaShoyuMi());
-        persianaSolariusAdapter = new PersianaSolariusAdapter(new PersianaSolarius());
-        persianaNatLightAdapter = new PersianaNatLightAdapter(new PersianaNatLight());
-        arCondicionadoContext = new ArCondicionadoContext(List.of(arCondicionadoVentoBaumnAdapter, arCondicionadoGellaKazaAdapter));
-        lampadaContext = new LampadaContext(List.of(lampadaPhellipesAdapter, lampadaShoyuMiAdapter));
-        persianaContext = new PersianaContext(List.of(persianaSolariusAdapter, persianaNatLightAdapter));
+        arCondicionadoContext = new ArCondicionadoContext(List.of(new ArCondicionadoVentoBaumnAdapter(new ArCondicionadoVentoBaumn()),
+                new ArCondicionadoGellaKazaAdapter(new ArCondicionadoGellaKaza())));
+        lampadaContext = new LampadaContext(List.of(new LampadaPhellipesAdapter(new LampadaPhellipes()),
+                new LampadaShoyuMiAdapter(new LampadaShoyuMi())));
+        persianaContext = new PersianaContext(List.of(new PersianaSolariusAdapter(new PersianaSolarius()),
+                new PersianaNatLightAdapter(new PersianaNatLight())));
     }
 
     public void modoSono() throws Exception {

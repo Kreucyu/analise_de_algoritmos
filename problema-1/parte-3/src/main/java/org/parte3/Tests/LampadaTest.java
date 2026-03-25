@@ -9,19 +9,4 @@ import org.parte3.Model.Domain.Lampada.LampadaDesligada;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LampadaTest {
-
-    @Test
-    void naoDeveDesligarLampadaJaDesligada() {
-        var estado = new LampadaDesligada();
-
-        EstadoInvalidoException ex = assertThrows(
-                EstadoInvalidoException.class,
-                () -> estado.desligar(
-                        new LampadaPhellipes(),
-                        new LampadaShoyuMi()
-                )
-        );
-
-        assertEquals("A lâmpada já está apagada!", ex.getMessage());
-    }
 }

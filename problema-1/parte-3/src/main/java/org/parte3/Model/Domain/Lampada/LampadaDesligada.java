@@ -8,7 +8,7 @@ public class LampadaDesligada implements EstadoLampada {
         for(LampadaCasa lampada : lampadaContext.getLampadas()) {
             lampada.ligar();
         }
-        lampadaContext.definirNovoEstado(new LampadaLigada());
+        lampadaContext.setNovoEstado(new LampadaLigada());
     }
 
     @Override
