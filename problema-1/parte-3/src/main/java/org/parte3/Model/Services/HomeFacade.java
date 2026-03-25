@@ -76,7 +76,7 @@ public class HomeFacade {
     }
 
     public void definirTemperaturaArCondicionado(int temperaturaDesejada) {
-        arCondicionadoContext.definirTemperatura(temperatura);
+        arCondicionadoContext.definirTemperatura(temperaturaDesejada);
     }
 }
 
