@@ -12,15 +12,11 @@ public class PersianaContext {
     }
 
     public void abrir() throws Exception {
-        for(PersianaCasa persiana : persianas) {
-            estadoAtual.abrir(this);
-        }
+        estadoAtual.abrir(this);
     }
 
     public void fechar() throws Exception {
-        for(PersianaCasa persiana : persianas) {
-            estadoAtual.fechar(this);
-        }
+        estadoAtual.fechar(this);
     }
 
     public void definirNovoEstado(EstadoPersiana novoEstado) {

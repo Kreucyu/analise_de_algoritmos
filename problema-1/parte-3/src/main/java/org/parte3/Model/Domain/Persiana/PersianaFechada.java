@@ -11,6 +11,7 @@ public class PersianaFechada implements EstadoPersiana {
         for(PersianaCasa persiana : persianaContext.listarPersianas()) {
             persiana.abrir();
         }
+        persianaContext.definirNovoEstado(new PersianaAberta());
     }
 
     @Override
