@@ -1,4 +1,6 @@
 package org.parte3.Model.Domain.Persiana;
 
-public class PersianaCasa {
+public interface PersianaCasa {
+    void abrir();
+    void fechar();
 }

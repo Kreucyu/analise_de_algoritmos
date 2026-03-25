@@ -4,9 +4,9 @@ import br.furb.analise.algoritmos.ArCondicionadoGellaKaza;
 import br.furb.analise.algoritmos.ArCondicionadoVentoBaumn;
 
 public interface EstadoArCondicionado {
-    void ligar(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn);
-    void desligar(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn);
-    void aumentarTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn);
-    void diminuirTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn);
-    void definirTemperatura(int temperatura,ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn);
+    void ligar();
+    void desligar();
+    void aumentarTemperatura();
+    void diminuirTemperatura();
+    void definirTemperatura(int temperatura);
 }

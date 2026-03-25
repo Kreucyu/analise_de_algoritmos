@@ -1,37 +1,25 @@
 package org.parte3.Model.Services;
 
 import br.furb.analise.algoritmos.*;
-import org.parte3.Model.Domain.ArCondicionado.ArCondicionadoDesligado;
-import org.parte3.Model.Domain.ArCondicionado.ArCondicionadoLigado;
-import org.parte3.Model.Domain.ArCondicionado.EstadoArCondicionado;
-import org.parte3.Model.Domain.Lampada.EstadoLampada;
-import org.parte3.Model.Domain.Lampada.LampadaDesligada;
-import org.parte3.Model.Domain.Lampada.LampadaLigada;
-import org.parte3.Model.Domain.Persiana.EstadoPersiana;
-import org.parte3.Model.Domain.Persiana.PersianaAberta;
-import org.parte3.Model.Domain.Persiana.PersianaFechada;
+import org.parte3.Model.Domain.ArCondicionado.*;
+import org.parte3.Model.Domain.Lampada.*;
+import org.parte3.Model.Domain.Persiana.*;
 
 public class HomeFacade {
-    private LampadaPhellipes lampadaPhellipes;
-    private LampadaShoyuMi  lampadaShoyuMi;
-    private PersianaNatLight persianaNatLight;
-    private PersianaSolarius persianaSolarius;
-    private ArCondicionadoGellaKaza arCondicionadoGellaKaza;
-    private ArCondicionadoVentoBaumn arCondicionadoVentoBaumn;
-    private EstadoPersiana estadoPersiana;
-    private EstadoLampada estadoLampada;
-    private EstadoArCondicionado estadoArCondicionado;
+    private LampadaPhellipesAdapter lampadaPhellipesAdapter;
+    private LampadaShoyuMiAdapter lampadaShoyuMiAdapter;
+    private PersianaNatLightAdapter persianaNatLightAdapter;
+    private PersianaSolariusAdapter persianaSolariusAdapter;
+    private ArCondicionadoGellaKazaAdapter arCondicionadoGellaKazaAdapter;
+    private ArCondicionadoVentoBaumnAdapter arCondicionadoVentoBaumnAdapter;
 
     public HomeFacade() {
-        arCondicionadoGellaKaza = new ArCondicionadoGellaKaza();
-        arCondicionadoVentoBaumn = new ArCondicionadoVentoBaumn();
-        lampadaPhellipes = new LampadaPhellipes();
-        lampadaShoyuMi = new LampadaShoyuMi();
-        persianaSolarius = new PersianaSolarius();
-        persianaNatLight = new PersianaNatLight();
-        estadoPersiana = new PersianaFechada();
-        estadoLampada = new LampadaDesligada();
-        estadoArCondicionado = new ArCondicionadoDesligado();
+        arCondicionadoGellaKazaAdapter = new ArCondicionadoGellaKazaAdapter(new ArCondicionadoGellaKaza());
+        arCondicionadoVentoBaumnAdapter = new ArCondicionadoVentoBaumnAdapter(new ArCondicionadoVentoBaumn());
+        lampadaPhellipesAdapter = new LampadaPhellipesAdapter(new LampadaPhellipes());
+        lampadaShoyuMiAdapter = new LampadaShoyuMiAdapter(new LampadaShoyuMi());
+        persianaSolariusAdapter = new PersianaSolariusAdapter(new PersianaSolarius());
+        persianaNatLightAdapter = new PersianaNatLightAdapter(new PersianaNatLight());
     }
 
     public void modoSono() throws Exception {
@@ -48,45 +36,39 @@ public class HomeFacade {
     }
 
     public void abrirPersianas() throws Exception {
-        estadoPersiana.abrir(persianaNatLight, persianaSolarius);
-        estadoPersiana = new PersianaAberta();
+
     }
 
     public void fecharPersianas() throws Exception {
-        estadoPersiana.fechar(persianaNatLight, persianaSolarius);
-        estadoPersiana = new PersianaFechada();
+
     }
 
     public void acenderLampadas() {
-        estadoLampada.ligar(lampadaPhellipes, lampadaShoyuMi);
-        estadoLampada = new LampadaLigada();
+
     }
 
     public void desligarLampadas() {
-        estadoLampada.desligar(lampadaPhellipes, lampadaShoyuMi);
-        estadoLampada = new LampadaDesligada();
+
     }
 
     public void ligarArCondicionados() {
-        estadoArCondicionado.ligar(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
-        estadoArCondicionado = new ArCondicionadoLigado();
+
     }
 
     public void desligarArCondicionados() {
-        estadoArCondicionado.desligar(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
-        estadoArCondicionado = new ArCondicionadoDesligado();
+
     }
 
     public void aumentarTemperaturaArCondicionados() {
-        estadoArCondicionado.aumentarTemperatura(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+
     }
 
     public void diminuirTemperaturaArCondiconados() {
-        estadoArCondicionado.diminuirTemperatura(arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+
     }
 
     public void definirTemperaturaArCondicionado(int temperaturaDesejada) {
-        estadoArCondicionado.definirTemperatura(temperaturaDesejada, arCondicionadoGellaKaza, arCondicionadoVentoBaumn);
+
     }
 }
 

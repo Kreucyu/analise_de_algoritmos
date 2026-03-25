@@ -6,28 +6,37 @@ import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 
 public class ArCondicionadoDesligado implements EstadoArCondicionado {
 
-    @Override
-    public void ligar(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+    private ArCondicionadoVentoBaumnAdapter arCondicionadoVentoBaumnAdapter;
+    private ArCondicionadoGellaKazaAdapter arCondicionadoGellaKazaAdapter;
 
+    public ArCondicionadoDesligado(ArCondicionadoVentoBaumnAdapter arCondicionadoVentoBaumnAdapter, ArCondicionadoGellaKazaAdapter arCondicionadoGellaKazaAdapter) {
+        this.arCondicionadoVentoBaumnAdapter = arCondicionadoVentoBaumnAdapter;
+        this.arCondicionadoGellaKazaAdapter = arCondicionadoGellaKazaAdapter;
     }
 
     @Override
-    public void desligar(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+    public void ligar() {
+        arCondicionadoGellaKazaAdapter.ligar();
+        arCondicionadoVentoBaumnAdapter.ligar();
+    }
+
+    @Override
+    public void desligar() {
         throw new EstadoInvalidoException("O Ar Condicionado já está desligado!");
     }
 
     @Override
-    public void aumentarTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+    public void aumentarTemperatura() {
         throw new EstadoInvalidoException("O Ar Condicionado está desligado!");
     }
 
     @Override
-    public void diminuirTemperatura(ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+    public void diminuirTemperatura() {
         throw new EstadoInvalidoException("O Ar Condicionado está desligado!");
     }
 
     @Override
-    public void definirTemperatura(int temperatura,ArCondicionadoGellaKaza arCondicionadoGellaKaza, ArCondicionadoVentoBaumn arCondicionadoVentoBaumn) {
+    public void definirTemperatura(int temperatura) {
         throw new EstadoInvalidoException("O Ar Condicionado está desligado!");
     }
 }
