@@ -1,13 +1,11 @@
 package org.parte3.Model.Domain.ArCondicionado;
 
-import br.furb.analise.algoritmos.ArCondicionadoGellaKaza;
-import br.furb.analise.algoritmos.ArCondicionadoVentoBaumn;
 import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 
 public class ArCondicionadoDesligado implements EstadoArCondicionado {
     @Override
     public void ligar(ArCondicionadoContext arCondicionadoContext) {
-        for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.listarArCondicionados()) {
+        for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
             arCondicionado.ligar();
         }
         arCondicionadoContext.definirNovoEstado(new ArCondicionadoLigado());

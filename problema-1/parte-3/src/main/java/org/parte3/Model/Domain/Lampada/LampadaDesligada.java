@@ -1,14 +1,12 @@
 package org.parte3.Model.Domain.Lampada;
 
-import br.furb.analise.algoritmos.LampadaPhellipes;
-import br.furb.analise.algoritmos.LampadaShoyuMi;
 import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 
 public class LampadaDesligada implements EstadoLampada {
     @Override
     public void ligar(LampadaContext lampadaContext) {
-        for(LampadaCasa lampadas : lampadaContext.listarLampadas()) {
-            lampadas.ligar();
+        for(LampadaCasa lampada : lampadaContext.getLampadas()) {
+            lampada.ligar();
         }
         lampadaContext.definirNovoEstado(new LampadaLigada());
     }

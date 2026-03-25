@@ -18,7 +18,7 @@ public class LampadaContext {
         estadoLampada.desligar(this);
     }
 
-    public List<LampadaCasa> listarLampadas() {
+    public List<LampadaCasa> getLampadas() {
         return this.lampadas;
     }
 

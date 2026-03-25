@@ -23,7 +23,7 @@ public class PersianaContext {
         this.estadoAtual = novoEstado;
     }
 
-    public List<PersianaCasa> listarPersianas() {
+    public List<PersianaCasa> getPersianas() {
         return this.persianas;
     }
 }

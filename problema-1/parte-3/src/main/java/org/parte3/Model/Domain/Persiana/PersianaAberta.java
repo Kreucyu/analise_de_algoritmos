@@ -1,7 +1,5 @@
 package org.parte3.Model.Domain.Persiana;
 
-import br.furb.analise.algoritmos.PersianaNatLight;
-import br.furb.analise.algoritmos.PersianaSolarius;
 import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 
 public class PersianaAberta implements EstadoPersiana {
@@ -12,7 +10,7 @@ public class PersianaAberta implements EstadoPersiana {
 
     @Override
     public void fechar(PersianaContext persianaContext) throws Exception {
-        for(PersianaCasa persiana : persianaContext.listarPersianas()) {
+        for(PersianaCasa persiana : persianaContext.getPersianas()) {
             persiana.fechar();
         }
         persianaContext.definirNovoEstado(new PersianaFechada());

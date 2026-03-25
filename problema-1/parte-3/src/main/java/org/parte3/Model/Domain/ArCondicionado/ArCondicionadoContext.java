@@ -1,8 +1,5 @@
 package org.parte3.Model.Domain.ArCondicionado;
 
-import br.furb.analise.algoritmos.ArCondicionadoGellaKaza;
-import br.furb.analise.algoritmos.ArCondicionadoVentoBaumn;
-
 import java.util.List;
 
 public class ArCondicionadoContext {
@@ -35,7 +32,7 @@ public class ArCondicionadoContext {
         estadoArCondicionado.definirTemperatura(temperatura, this);
     }
 
-    public List<ArCondicionadoCasa> listarArCondicionados() {
+    public List<ArCondicionadoCasa> getArCondicionados() {
         return this.arCondicionados;
     }
 
