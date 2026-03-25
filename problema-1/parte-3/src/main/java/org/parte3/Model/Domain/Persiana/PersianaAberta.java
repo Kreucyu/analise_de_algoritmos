@@ -13,9 +13,5 @@ public class PersianaAberta implements EstadoPersiana {
     @Override
     public void fechar(PersianaNatLight persianaNatLight, PersianaSolarius persianaSolarius) throws Exception {
         persianaSolarius.descerPersiana();
-        if(persianaNatLight.estaPalhetaErguida()) {
-            persianaNatLight.descerPalheta();
-        }
-        persianaNatLight.fecharPalheta();
     }
 }

@@ -12,7 +12,6 @@ public class LampadaLigada implements EstadoLampada {
 
     @Override
     public void desligar(LampadaPhellipes lampadaPhellipes, LampadaShoyuMi lampadaShoyuMi) {
-        lampadaPhellipes.setIntensidade(0);
-        lampadaShoyuMi.desligar();
+
     }
 }

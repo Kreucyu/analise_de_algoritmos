@@ -1,13 +1,26 @@
 package org.parte3.Model.Domain.Persiana;
 
-public class PersianaNatLightAdapter implements PersianaCasa {
-    @Override
-    public void abrir() {
+import br.furb.analise.algoritmos.PersianaNatLight;
 
+public class PersianaNatLightAdapter implements PersianaCasa {
+    private final PersianaNatLight persianaNatLight;
+
+    public PersianaNatLightAdapter(PersianaNatLight persianaNatLight) {
+        this.persianaNatLight = persianaNatLight;
+    }
+    @Override
+    public void abrir() throws Exception {
+        if(!persianaNatLight.estaPalhetaAberta()) {
+            persianaNatLight.abrirPalheta();
+        }
+        persianaNatLight.subirPalheta();
     }
 
     @Override
-    public void fechar() {
-
+    public void fechar() throws Exception {
+        if(persianaNatLight.estaPalhetaErguida()) {
+            persianaNatLight.descerPalheta();
+        }
+        persianaNatLight.fecharPalheta();
     }
 }
