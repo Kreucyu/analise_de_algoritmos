@@ -2,99 +2,111 @@ Trabalho de Análise de Algoritmos - Parte III
 
 ---
 
-Neste trabalho, utilizamos Java para implementar um solução de casa inteligente para um usuário aaplicando os conceitos aprendidos na aula.
+Neste trabalho, utilizamos Java para implementar uma solução de casa inteligente, aplicando os conceitos aprendidos em aula.
 
-O sistema permite ao usuário controlar de forma fácil a sua casa e seus dispositivos, contando com um sistema universal de controle de dispositivos e modos de uso pre-definidos.
+O sistema permite ao usuário controlar de forma simples os dispositivos da casa, contando com um sistema universal de controle e modos de uso pré-definidos.
 
 ---
 
 Problemas/Solução
-    
-    O código feito inicialmente estava com um excesso de if's, alto acoplamento, god entity e dependências de métodos/classes em lugares sem sentido.
 
-    Utilizando os conceitos de POO e os conceitos estudados em sala de aula, foi possível aplicar uma solução com melhor qualidade de código. 
+    O código inicial apresentava excesso de if's, alto acoplamento, presença de God Object e dependências mal distribuídas entre classes e métodos.
 
-    As abordagens utilizadas foram:
+    Utilizando conceitos de Programação Orientada a Objetos e os conteúdos estudados em sala, foi possível evoluir o sistema para uma solução mais organizada, desacoplada e de melhor qualidade.
+
+    As principais abordagens utilizadas foram:
 
 ---
 
 Design Patterns Utilizados
 
-Facade
+ - Facade
 
-    A interface do projeto utilizou o padrão Fachada/Facade.
-    
-    Serve para esconder métodos complexos e transformando tudo em apenas uma função que precisa ser chamada.
+        A interface principal do sistema utiliza o padrão Facade.
 
+        Seu objetivo é simplificar o uso do sistema, escondendo a complexidade interna e oferecendo métodos de alto nível para o usuário.
 
-State
+ - State
 
-    Os equipamentos exigem diferentes tipos de funções, podendo variar dependendo do seu estado, então implementamos o padrão State.
+        Os dispositivos possuem comportamentos diferentes dependendo do seu estado (ligado/desligado, aberto/fechado, etc).
 
-    Serve para definir qual função pode ou não ser executada, definindo isso com base no estado do dispositivo.
+        Para lidar com isso, foi utilizado o padrão State.
 
-Adapter
+        Esse padrão permite encapsular o comportamento de cada estado em classes específicas, eliminando condicionais e tornando o código mais organizado e extensível.
 
-    Com base no enunciado, precisavámos implementar um sistema universal para o controle dos dispositivos da casa inteligente, mas cada dispositivo tem a suas próprias funções.
+ - Adapter
 
-    Para conseguir realizar o sistema universal, foi utilizado o Padrão Adapter, para que fosse criada uma forma genérica de um dispositivo.
+       Cada dispositivo possui uma API própria, com métodos e comportamentos diferentes.
 
-    Com a interface do dispositivo criada, foi possível utilizar comandos únicos para os devidos aparelhos, implementando a lógica de seus métodos na classe genérica.
+       Para criar um sistema de controle unificado, foi utilizado o padrão Adapter.
 
-Context (Strategy)
+       Com isso, foi definida uma interface comum para os dispositivos, permitindo que todos sejam controlados de forma padronizada, enquanto a lógica específica de cada um fica encapsulada nos adapters.
 
-    Para corrigir o problema da Fachada ser uma God Entity, cuidando da manipulação e declaração de todos os dispositivos, foi aplicado o Context, sendo como um recorte do Padrão Strategy.
+ - Context (Strategy)
 
-    Com o Context, foi possível criar as devidas classes dos dispositivos, servindo para manter a referência dos objetos e definindo as executando as devidas funções em conjunto com o Estado do dispositivo.
+       Para evitar que a Facade se tornasse uma God Class, foi introduzido o conceito de Context.
+
+       O Context é responsável por manter a referência dos dispositivos e delegar as operações para o estado atual.
+
+       Ele atua como um ponto central de controle, trabalhando em conjunto com o padrão State.
 
 ---
 
 Clean Code
 
-    Para manter a estrutura de clean code, aplicamos: 
-    *Nomes significativos na declaração de variáveis e métodos, mantendo-os consistentes.
-    *Funções bem definidas para executar apenas 1 função, utilizando poucos parâmetros para a chamada de cada uma delas.
-    *Uso de exceções para o tratamento de possíveis erros.
-    *Classes limpas, buscando fazer uma separação maior de classes para suas determinadas funções.
+    Para manter a qualidade do código, foram aplicados princípios de Clean Code:
+
+     - Nomes significativos para variáveis e métodos  
+     - Funções com responsabilidade única (Single Responsibility)  
+     - Baixo número de parâmetros por método  
+     - Uso de exceções para tratamento de erros  
+     - Separação clara de responsabilidades entre classes
 
 ---
 
 Object Calisthenics
-    
-    Para atender aos object calisthenics, aplicamos:
-    *Apenas um nível de identação por método.
-    *Não usamos a palavra reservada else.
-    *Evitarmos o uso de if's e switch's, substituindo por outros métodos de refatoração.
-    *Apenas um ponto por linha.
-    *Não abreviamos nomes.
-    *Buscamos manter as entidades pequenas, mantendo um número considerável de arquivos por pacotes.
-    *Não utilizamos classes com mais de 2 atributos de instâncias.
-    *Evitamos o uso de getters e setters em partes desnecessárias do código.
+
+    Para atender às regras de Object Calisthenics, foram aplicadas as seguintes práticas:
+
+     - Apenas um nível de identação por método  
+     - Evitar o uso de else  
+     - Redução de if's e switch's, substituindo por polimorfismo  
+     - Apenas um ponto por linha  
+     - Nomes descritivos (sem abreviações)  
+     - Classes pequenas e com responsabilidade bem definida  
+     - Evitar classes com muitos atributos  
+     - Redução do uso desnecessário de getters e setters
 
 ---
 
 Refactoring
-    
-    Para a melhora do código, foi aplicado:
-    *Tratamento de código duplicado, na classe ArCondicionadoLigado, onde ocorria diversos loops duplicados, foram substituidos pelo método genérico "executarAcao()".
-    *Tratamento de excesso de condicionais, encapsulando os dispositvos em classes de controle de estados, aplicando Replace Conditional With Polymorphism.
-    *Tratamento de muitas chamadas de métodos com muitos parâmetros, substituindo apenas pela chamada de context, que fica responsável pelos dispositivos.
-    *Tratamento de códigos de erros por exceções personalizadas.
+
+    Para melhorar a qualidade do código, foram aplicadas as seguintes refatorações:
+
+     - Remoção de código duplicado (ex: loops repetidos no controle de ar-condicionado, substituídos por um método genérico)  
+     - Substituição de condicionais por polimorfismo (Replace Conditional with Polymorphism)  
+     - Redução de métodos com muitos parâmetros, utilizando o Context como intermediário  
+     - Criação de exceções personalizadas para melhor tratamento de erros
+
+---
 
 Tratamento de Exceções
 
-    Para o tratamento das exceções, implementamos duas exceções personalizadas:
-    "EstadoInvalidoException", que tem como finalidade as exeções de um dispositivo quando ele está em um estado inacessível para aquela determinada função.
-    "FalhaNoDispositivoException", que tem como finalidade as exeções da persiana, caso ela não consiga ser carregada ou executar uma determinada função.
-    
+    Foram implementadas exceções personalizadas para representar erros do domínio:
+
+    "EstadoInvalidoException": lançada quando uma operação é chamada em um estado inválido do dispositivo
+
+    "FalhaNoDispositivoException": utilizada para tratar falhas provenientes dos dispositivos (ex: erro ao executar operação na persiana)
+
 ---
 
 Testes
 
-    Foram implementados os testes automatizados solicitados no enunciado do trabalho, a fim de testar:
-    *As chamadas de métodos separados de cada dispositivo.
-    *As chamadas do modo de trabalho, para fazer as funções automaticamente.
-    *As chamadas do modo sono, para "desligar" a casa em determinado momento.
+    Foram implementados testes automatizados conforme solicitado no enunciado, cobrindo:
+
+     - Chamadas individuais de cada dispositivo  
+     - Execução do modo trabalho  
+     - Execução do modo sono
 
 ---
 
