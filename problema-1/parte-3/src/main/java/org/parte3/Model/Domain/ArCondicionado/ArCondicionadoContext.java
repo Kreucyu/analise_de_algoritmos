@@ -8,7 +8,6 @@ public class ArCondicionadoContext {
     private EstadoArCondicionado estadoArCondicionado;
 
     public ArCondicionadoContext(List<ArCondicionadoCasa> arCondicionados) {
-
         this.arCondicionados = arCondicionados;
         this.estadoArCondicionado = new ArCondicionadoDesligado();
     }

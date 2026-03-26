@@ -33,7 +33,7 @@ public class ArCondicionadoLigado implements EstadoArCondicionado {
     }
 
     public void executarAcao(Consumer<ArCondicionadoCasa> acao, ArCondicionadoContext arCondicionadoContext) {
-        for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
+        for (ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
             acao.accept(arCondicionado);
         }
     }

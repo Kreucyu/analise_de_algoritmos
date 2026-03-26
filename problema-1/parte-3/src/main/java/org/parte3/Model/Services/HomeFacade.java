@@ -36,7 +36,8 @@ public class HomeFacade {
         ligarLampadas();
         abrirPersianas();
         ligarArCondicionados();
-        definirTemperaturaArCondicionado(25);
+        int temperaturaModoTrabalho = 25;
+        definirTemperaturaArCondicionado(temperaturaModoTrabalho);
     }
 
     public void abrirPersianas() throws Exception {
