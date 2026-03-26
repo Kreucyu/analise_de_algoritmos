@@ -5,7 +5,9 @@ import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 public class ArCondicionadoDesligado implements EstadoArCondicionado {
     @Override
     public void ligar(ArCondicionadoContext arCondicionadoContext) {
-        arCondicionadoContext.executarAcao(ArCondicionadoCasa::ligar);
+        for (ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
+            arCondicionado.ligar();
+        }
         arCondicionadoContext.setNovoEstado(new ArCondicionadoLigado());
     }
 

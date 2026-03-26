@@ -24,12 +24,12 @@ public class ArCondicionadoLigado implements EstadoArCondicionado {
 
     @Override
     public void diminuirTemperatura(ArCondicionadoContext arCondicionadoContext) {
-       executarAcao(ArCondicionadoCasa::aumentarTemperatura, arCondicionadoContext);
+       executarAcao(ArCondicionadoCasa::diminuirTemperatura, arCondicionadoContext);
     }
 
     @Override
     public void definirTemperatura(int temperatura, ArCondicionadoContext arCondicionadoContext) {
-        executarAcao(temperaturaParametro -> { ArCondicionadoCasa.definirTemperatura(temperaturaParametro); }, arCondicionadoContext);
+        executarAcao(ArCondicionado -> ArCondicionado.definirTemperatura(temperatura), arCondicionadoContext);
     }
 
     public void executarAcao(Consumer<ArCondicionadoCasa> acao, ArCondicionadoContext arCondicionadoContext) {
