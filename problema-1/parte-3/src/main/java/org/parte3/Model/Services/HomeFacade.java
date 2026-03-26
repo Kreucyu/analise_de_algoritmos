@@ -26,13 +26,13 @@ public class HomeFacade {
                 new PersianaNatLightAdapter(new PersianaNatLight())));
     }
 
-    public void modoSono() throws Exception {
+    public void modoSono() {
         desligarArCondicionados();
         desligarLampadas();
         fecharPersianas();
     }
 
-    public void modoTrabalho() throws Exception {
+    public void modoTrabalho() {
         ligarLampadas();
         abrirPersianas();
         ligarArCondicionados();
@@ -40,11 +40,11 @@ public class HomeFacade {
         definirTemperaturaArCondicionado(temperaturaModoTrabalho);
     }
 
-    public void abrirPersianas() throws Exception {
+    public void abrirPersianas() {
         persianaContext.abrir();
     }
 
-    public void fecharPersianas() throws Exception {
+    public void fecharPersianas() {
         persianaContext.fechar();
     }
 
