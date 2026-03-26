@@ -1,6 +1,7 @@
 package org.parte3.Model.Domain.ArCondicionado;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ArCondicionadoContext {
     private List<ArCondicionadoCasa> arCondicionados;

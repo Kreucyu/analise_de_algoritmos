@@ -2,6 +2,8 @@ package org.parte3.Model.Domain.ArCondicionado;
 
 import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 
+import java.util.function.Consumer;
+
 public class ArCondicionadoLigado implements EstadoArCondicionado {
 
     @Override
@@ -11,30 +13,28 @@ public class ArCondicionadoLigado implements EstadoArCondicionado {
 
     @Override
     public void desligar(ArCondicionadoContext arCondicionadoContext) {
-        for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
-            arCondicionado.desligar();
-        }
+        executarAcao(ArCondicionadoCasa::desligar, arCondicionadoContext);
         arCondicionadoContext.setNovoEstado(new ArCondicionadoDesligado());
     }
 
     @Override
     public void aumentarTemperatura(ArCondicionadoContext arCondicionadoContext) {
-        for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
-            arCondicionado.aumentarTemperatura();
-        }
+        executarAcao(ArCondicionadoCasa::aumentarTemperatura, arCondicionadoContext);
     }
 
     @Override
     public void diminuirTemperatura(ArCondicionadoContext arCondicionadoContext) {
-        for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
-            arCondicionado.diminuirTemperatura();
-        }
+       executarAcao(ArCondicionadoCasa::aumentarTemperatura, arCondicionadoContext);
     }
 
     @Override
     public void definirTemperatura(int temperatura, ArCondicionadoContext arCondicionadoContext) {
+        executarAcao(temperaturaParametro -> { ArCondicionadoCasa.definirTemperatura(temperaturaParametro); }, arCondicionadoContext);
+    }
+
+    public void executarAcao(Consumer<ArCondicionadoCasa> acao, ArCondicionadoContext arCondicionadoContext) {
         for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
-            arCondicionado.definirTemperatura(temperatura);
+            acao.accept(arCondicionado);
         }
     }
 }

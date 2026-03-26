@@ -5,9 +5,7 @@ import org.parte3.Model.Domain.Exceptions.EstadoInvalidoException;
 public class ArCondicionadoDesligado implements EstadoArCondicionado {
     @Override
     public void ligar(ArCondicionadoContext arCondicionadoContext) {
-        for(ArCondicionadoCasa arCondicionado : arCondicionadoContext.getArCondicionados()) {
-            arCondicionado.ligar();
-        }
+        arCondicionadoContext.executarAcao(ArCondicionadoCasa::ligar);
         arCondicionadoContext.setNovoEstado(new ArCondicionadoLigado());
     }
 
@@ -30,4 +28,6 @@ public class ArCondicionadoDesligado implements EstadoArCondicionado {
     public void definirTemperatura(int temperatura, ArCondicionadoContext arCondicionadoContext) {
         throw new EstadoInvalidoException("O ar condicionado está desligado!");
     }
+
+
 }
