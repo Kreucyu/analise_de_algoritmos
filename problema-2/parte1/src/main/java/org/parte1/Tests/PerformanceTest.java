@@ -9,7 +9,7 @@ public class PerformanceTest {
     public static void main(String[] args) {
         questaoUmTesteUm();
         questaoUmTesteDois();
-        //inserir aqui o teste 2
+        questaoDoisTesteUm();
         questaoTresTesteUm();
         questaoTresTesteDois();
         //inserir aqui o teste 4
@@ -183,7 +183,74 @@ public class PerformanceTest {
         System.out.println("\nIsso acontece por que a de tamanho = 100.000 não precisa redimensionar seu tamanho como as outras precisam.");
     }
 
-    //inserir questao 2
+    private static void questaoDoisTesteUm() {
+        System.out.println("\nQuestão 2:\n");
+
+        int elementos = 100_000;
+        int execucoes = 20;
+        double[] valoresExecucoes = new double[execucoes];
+        long start, end;
+        double soma = 0;
+
+        Random random = new Random();
+
+        try {
+            System.gc();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < execucoes; i++) {
+            ArrayList<Integer> lista = new ArrayList<>();
+
+            start = System.nanoTime();
+            for (int j = 0; j < elementos; j++) {
+                int pos = lista.size() == 0 ? 0 : random.nextInt(lista.size());
+                lista.add(pos, j);
+            }
+            end = System.nanoTime();
+
+            valoresExecucoes[i] = (end - start) / 1_000_000.0;
+        }
+
+        for (double v : valoresExecucoes) soma += v;
+        double mediaArray = soma / execucoes;
+
+        System.out.println("ArrayList: " + String.format("%.3f", mediaArray) + " ms");
+
+        soma = 0;
+
+        try {
+            System.gc();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < execucoes; i++) {
+            LinkedList<Integer> lista = new LinkedList<>();
+
+            start = System.nanoTime();
+            for (int j = 0; j < elementos; j++) {
+                int pos = lista.size() == 0 ? 0 : random.nextInt(lista.size());
+                lista.add(pos, j);
+            }
+            end = System.nanoTime();
+
+            valoresExecucoes[i] = (end - start) / 1_000_000.0;
+        }
+
+        for (double v : valoresExecucoes) soma += v;
+        double mediaLinked = soma / execucoes;
+
+        System.out.println("LinkedList: " + String.format("%.3f", mediaLinked) + " ms");
+
+        String maisRapida = mediaLinked > mediaArray ? "ArrayList" : "LinkedList";
+        double vezes = mediaLinked > mediaArray ? mediaLinked / mediaArray : mediaArray / mediaLinked;
+
+        System.out.println("\n" + maisRapida + " é mais rápida (" + String.format("%.2f", vezes) + "x)");
+    }
 
     private static void questaoTresTesteUm() {
         System.out.println("\nQuestão 3-1:\n");
