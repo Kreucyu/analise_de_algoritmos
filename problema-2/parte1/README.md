@@ -1,7 +1,3 @@
-Com base no PDF e nos logs, aqui está o README:
-
----
-
 # ArrayList vs LinkedList — Análise Experimental
 
 Trabalho prático de análise experimental comparando o desempenho de `ArrayList` e `LinkedList` em diferentes operações, desenvolvido para a disciplina de Algoritmos e Estruturas de Dados na FURB.
@@ -19,7 +15,7 @@ Trabalho prático de análise experimental comparando o desempenho de `ArrayList
 
 **Questão 2 — Inserção em posição aleatória (20 execuções)**
 - ArrayList: ~191 ms | LinkedList: ~7.750 ms
-- ArrayList foi **40x mais rápido** graças ao `System.arraycopy`.
+- ArrayList foi **40x mais rápido**.
 
 **Questão 3 — Remoção sequencial (100.000 elementos, 20 execuções)**
 - Removendo o **primeiro elemento**: LinkedList venceu por **810x** (operação O(1) vs O(n)).
