@@ -41,3 +41,8 @@ O ArrayList superou a LinkedList na maioria dos cenários. O principal fator foi
 
 - Java
 - JVM (HotSpot)
+
+---
+
+<img width="884" height="1142" alt="image" src="https://github.com/user-attachments/assets/33250e57-ed54-4531-b77f-04c64bbec797" />
+
