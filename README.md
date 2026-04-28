@@ -24,6 +24,10 @@ Alguns projetos deste repositório também exploram métricas de desempenho e an
 * Avaliação de eficiência em cenários variados
 * Comparação de algoritmos e estruturas de dados
 
+## Qualidade de Código
+
+Todos os projetos presentes neste repositório contam com testes unitários, garantindo maior confiabilidade, validação de comportamento e suporte seguro para refatorações contínuas.
+
 ## Estrutura
 
 O repositório contém diversos projetos independentes, cada um podendo explorar diferentes abordagens, algoritmos, estruturas e técnicas de implementação.
