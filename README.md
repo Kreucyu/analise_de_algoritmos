@@ -1,6 +1,6 @@
 # Análise de Algoritmos Monorepo
 
-Este repositório reúne múltiplos projetos desenvolvidos com foco em **análise de algoritmos**, **avaliação de desempenho** e aplicação prática de boas práticas de desenvolvimento de software.
+Este repositório reúne múltiplos projetos desenvolvidos com foco em análise de algoritmos, avaliação de desempenho e aplicação prática de boas práticas de desenvolvimento de software.
 
 ## Objetivo
 
